@@ -16,3 +16,15 @@ div.tile {
     background-position-x: center;
     display: inline-block;
 }
+
+.btn {
+    border-radius: 50%;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.btn-right {
+    position: absolute;
+    right: 184px;
+    top: 235px;
+}

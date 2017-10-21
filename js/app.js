@@ -4,39 +4,34 @@ const app = new Vue({
         'board': Board,
         'tile': Tile
     },
+    methods: {
+        addRight() {
+            this.tiles = this.tiles.map(row => [...row, {
+                block_type: 0,
+                block_rotation: 0,
+                fog: false
+            }])
+        },
+        addBottom() {
+            this.tiles.push(this.tiles[this.tiles.length - 1].map(tile => ({
+                block_type: 0,
+                block_rotation: 0,
+                fog: false
+            })) || [
+                {
+                    block_type: 0,
+                    block_rotation: 0,
+                    fog: false
+                }
+            ])
+        }
+    },
     data: {
         tiles: [
             [
                 {
-                    block_type: 0,
-                    block_rotation: 0,
-                    fog: false
-                },
-                {
                     block_type: -1,
-                    block_rotation: 1,
-                    fog: false
-                },
-                {
-                    block_type: 0,
-                    block_rotation: 2,
-                    fog: false
-                }
-            ],
-            [
-                {
-                    block_type: 4,
-                    block_rotation: 3,
-                    fog: false
-                },
-                {
-                    block_type: 4,
                     block_rotation: 0,
-                    fog: false
-                },
-                {
-                    block_type: 4,
-                    block_rotation: 1,
                     fog: false
                 }
             ]

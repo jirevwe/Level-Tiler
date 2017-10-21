@@ -7,8 +7,8 @@
     <title>Level Tiler</title>
     <base href="./">
     <base name="image" href="./img/">
-    <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
     <div class="container" id="app">
@@ -18,22 +18,32 @@
                     <h1>Level Tiler</h1>
                 </center>
                 <board :height="500" :tile-width="(tiles[0] || []).length" :tile-height="tiles.length" inline-template>
-                    <div class="board" :style="{ width: width + 'px', height: height + 'px' }">
-                        <div class="row" v-for="(row, index) in tiles" :key="index">
-                            <tile v-for="(tile, index) in row" :key="index" :info="tile" inline-template>
-                                <div class="tile" @click="relay(detectDblClick, change)($event, rotate)"
-                                    :style="{ height: $parent.rowHeight + 'px', width: $parent.rowHeight + 'px', 
-                                        'background-image': 'url(' + image + ')', transform: 'rotate(' + rotation + 'deg)' }">
-                                    
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="board" :style="{ width: width + 'px', height: height + 'px' }">
+                                <div class="row" v-for="(row, index) in $parent.tiles" :key="index">
+                                    <tile v-for="(tile, index) in row" :key="index" :info="tile" inline-template>
+                                        <div class="tile" @click="relay(detectDblClick, change)($event, rotate)"
+                                            :style="{ height: $parent.rowHeight + 'px', width: $parent.rowHeight + 'px', 
+                                                'background-image': 'url(' + image + ')', transform: 'rotate(' + rotation + 'deg)' }">
+                                            
+                                        </div>
+                                    </tile>
                                 </div>
-                            </tile>
+                                <button @click="$parent.addRight" class="btn btn-success btn-right">+</button>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <center>
+                                    <button @click="$parent.addBottom" class="btn btn-success">+</button>
+                            </center>
                         </div>
                     </div>
                 </board>
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js"></script>
     <script src="./js/app.config.js"></script>
     <script src="./js/components/board.vue.js"></script>
     <script src="./js/components/tile.vue.js"></script>
