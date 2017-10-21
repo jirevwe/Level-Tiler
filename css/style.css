@@ -1,0 +1,18 @@
+body 
+{ 
+    padding: 5em; 
+    font-family: monospace; 
+    line-height: 1.5 
+}
+
+.board {
+    text-align: center;
+}
+
+div.tile {
+    border: 1px solid black;
+    background-size: contain; 
+    background-repeat: no-repeat;
+    background-position-x: center;
+    display: inline-block;
+}
