@@ -1,3 +1,5 @@
+Vue.use(vueClipboard)
+
 const app = new Vue({
     el: '#app',
     components: {

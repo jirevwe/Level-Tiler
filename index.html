@@ -54,7 +54,7 @@
                         <div class="modal-container">
                 
                             <div class="modal-header">
-                                {{title}}
+                                {{title}} <button v-clipboard:copy="title">Copy</button>
                             </div>
                 
                             <div class="modal-body" v-html="body"></div>
@@ -76,6 +76,7 @@
     </div>
     
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js"></script>
+    <script type="text/javascript" src="./js/min/vue-clipboard.min.js"></script>
     <script src="./js/app.config.js"></script>
     <script src="./js/components/board.vue.js"></script>
     <script src="./js/components/tile.vue.js"></script>

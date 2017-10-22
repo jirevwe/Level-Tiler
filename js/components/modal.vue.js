@@ -12,6 +12,11 @@ const Modal = Vue.component('modal-item', {
             this.show = false;
         }
     },
+    computed: {
+        text() {
+            return ''
+        }
+    },
     mounted() {
         this.$parent.$on('modal:show', (modal) => {
             this.title = modal.title || '';
