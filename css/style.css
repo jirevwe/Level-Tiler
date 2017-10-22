@@ -10,7 +10,7 @@ body
 }
 
 div.tile {
-    border: 1px solid black;
+    border: 0px solid black;
     background-size: contain; 
     background-repeat: no-repeat;
     background-position-x: center;
@@ -27,4 +27,16 @@ div.tile {
     position: absolute;
     right: 184px;
     top: 235px;
+}
+
+.key {
+    color: blue;
+}
+
+.number {
+    color: green;
+}
+
+.boolean {
+    color: #00AAFF;
 }
