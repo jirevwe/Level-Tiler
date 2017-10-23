@@ -19,12 +19,11 @@ const Tile = Vue.component('tile', {
         },
         detectDblClick(e, fn) {
             const delay = 500;
-            //console.log(fn)
             if (e && e.target) {
                 const elem = e.target;
                 if (elem._clickTime) {
                     const elapsedInterval = ((new Date()) - elem._clickTime)
-                    if (elapsedInterval < 500) {
+                    if (elapsedInterval < delay) {
                         return true;
                     }
                     else {
@@ -42,14 +41,47 @@ const Tile = Vue.component('tile', {
             }
             return false;
         },
+        detectMouseDown(e) {
+            const threshold = 1500;
+            if (e && e.target) {
+                const elem = e.target;
+                elem._mouseTapTime = new Date();
+            }
+            return true;
+        },
+        detectMouseUp(e, fn) {
+            const threshold = 1500;
+            if (e && e.target) {
+                const elem = e.target;
+                if (elem._mouseTapTime) {
+                    const elapsedInterval = ((new Date()) - elem._mouseTapTime)
+                    console.log(elapsedInterval, elapsedInterval >= threshold)
+                    if (elapsedInterval >= threshold) {
+                        if (typeof fn === 'function') fn()
+                        return true;
+                    }
+                }
+                elem._mouseTapTime = null;
+            }
+            return false;
+        },
+        detectLongPress(e, fn) {
+            return !this.detectMouseUp(e, fn);
+        },
         relay(...fns) {
-            //console.log(fns);
+            console.log("click", fns)
             return (...args) => {
                 fns.reduce((status, fn) => {
                     if (status) return fn(...args)
                     return false; 
                 }, true)
             }
+        },
+        placeEnemy() {
+            console.log("enemy placed")
+        },
+        curry(fn, ...params) {
+            return () => fn(...params);
         }
     },
     computed: {

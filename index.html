@@ -27,7 +27,9 @@
                             <div class="board" :style="{ width: width + 'px', height: height + 'px' }">
                                 <div class="row" v-for="(row, index) in $parent.tiles" :key="index">
                                     <tile v-for="(tile, index) in row" :key="index" :info="tile" inline-template>
-                                        <div class="tile" @click="relay(detectDblClick, change)($event, rotate)"
+                                        <div class="tile" 
+                                            @mousedown="detectMouseDown" 
+                                            @mouseup="relay(detectLongPress, curry(relay(detectDblClick, change), $event, rotate))($event, placeEnemy)"
                                             :style="{ height: $parent.rowHeight + 'px', width: $parent.rowHeight + 'px', 
                                                 'background-image': 'url(' + image + ')', transform: 'rotate(' + rotation + 'deg)' }">
                                             
