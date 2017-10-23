@@ -10,12 +10,13 @@ const Modal = Vue.component('modal-item', {
     methods: {
         close() {
             this.show = false;
+        },
+        copyBody() {
+            this.$parent.$emit("copy", this.body);
         }
     },
     computed: {
-        text() {
-            return ''
-        }
+        
     },
     mounted() {
         this.$parent.$on('modal:show', (modal) => {

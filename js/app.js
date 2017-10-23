@@ -1,4 +1,4 @@
-Vue.use(vueClipboard)
+//Vue.use(vueClipboard)
 
 const app = new Vue({
     el: '#app',
@@ -8,6 +8,9 @@ const app = new Vue({
         'modal-item': Modal
     },
     methods: {
+        doc() {
+            return document;
+        },
         addRight() {
             this.tiles = this.tiles.map(row => [...row, {
                 block_type: 0,
@@ -31,7 +34,7 @@ const app = new Vue({
         exportLevel() {
             this.$emit('modal:show', {
                 title: 'Current Level',
-                body: this.syntaxHighlight(this.tiles)
+                body: JSON.stringify(this.tiles)
             })
         },
         syntaxHighlight(json) {
@@ -66,5 +69,23 @@ const app = new Vue({
                 }
             ]
         ]
+    },
+    mounted() {
+        this.$on("copy", (text) => {
+            var textarea = document.createElement("textarea");
+            textarea.textContent = text;
+            textarea.style.position = "fixed";  // Prevent scrolling to bottom of page in MS Edge.
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                return document.execCommand("copy");  // Security exception may be thrown by some browsers.
+            } catch (ex) {
+                console.warn("Copy to clipboard failed.", ex);
+                return false;
+            } finally {
+                document.body.removeChild(textarea);
+            }
+            document.execCommand("copy", )
+        })
     }
 })
