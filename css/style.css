@@ -44,3 +44,14 @@ div.tile {
 .boolean {
     color: #00AAFF;
 }
+
+span.enemy {
+    padding: 10%;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    position: absolute;
+    top: 10%;
+    left: 40%;
+    right: 40%;
+}

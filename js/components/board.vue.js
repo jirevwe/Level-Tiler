@@ -5,7 +5,7 @@ const Board = Vue.component('board', {
             return Math.floor(this.height / this.tileHeight);
         },
         rowTileWidth() {
-            return Math.floor(this.width / this.tileWidth);
+            return Math.min(Math.floor(this.width / this.tileWidth), this.rowHeight);
         }
     },
     mounted() {

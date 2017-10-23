@@ -21,7 +21,7 @@
                         <button @click="exportLevel">Export</button>
                     </h1>
                 </center>
-                <board :height="500" :tile-width="(tiles[0] || []).length" :tile-height="tiles.length" inline-template>
+                <board :height="600" :width="1140" :tile-width="(tiles[0] || []).length" :tile-height="tiles.length" inline-template>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="board" :style="{ width: width + 'px', height: height + 'px' }">
@@ -30,9 +30,11 @@
                                         <div class="tile" 
                                             @mousedown="detectMouseDown" 
                                             @mouseup="relay(detectLongPress, curry(relay(detectDblClick, change), $event, rotate))($event, placeEnemy)"
-                                            :style="{ height: $parent.rowHeight + 'px', width: $parent.rowHeight + 'px', 
+                                            :style="{ height: $parent.rowHeight + 'px', width: $parent.rowTileWidth + 'px', 
                                                 'background-image': 'url(' + image + ')', transform: 'rotate(' + rotation + 'deg)' }">
-                                            
+                                            <enemy :display="info.fog" inline-template>
+                                                <span class="enemy" v-if="display"></span>
+                                            </enemy>
                                         </div>
                                     </tile>
                                 </div>
@@ -83,6 +85,7 @@
     <script src="./js/app.config.js"></script>
     <script src="./js/components/board.vue.js"></script>
     <script src="./js/components/tile.vue.js"></script>
+    <script src="./js/components/enemy.vue.js"></script>
     <script src="./js/components/modal.vue.js"></script>
     <script src="./js/app.js"></script>
 </body>

@@ -50,7 +50,7 @@ const Tile = Vue.component('tile', {
             return true;
         },
         detectMouseUp(e, fn) {
-            const threshold = 1500;
+            const threshold = 1000;
             if (e && e.target) {
                 const elem = e.target;
                 if (elem._mouseTapTime) {
@@ -78,7 +78,7 @@ const Tile = Vue.component('tile', {
             }
         },
         placeEnemy() {
-            console.log("enemy placed")
+            this.info.fog = !this.info.fog;
         },
         curry(fn, ...params) {
             return () => fn(...params);
