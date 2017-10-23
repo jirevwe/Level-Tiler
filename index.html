@@ -7,7 +7,7 @@
     <title>Level Tiler</title>
     <base href="./">
     <base name="image" href="./img/">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/min/bootstrap.min.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/modal.css">
 </head>
@@ -35,11 +35,13 @@
                                     </tile>
                                 </div>
                                 <button @click="$parent.addRight" class="btn btn-success btn-right">+</button>
+                                <button @click="$parent.removeRight" class="btn btn-danger btn-right minus">-</button>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <center>
                                     <button @click="$parent.addBottom" class="btn btn-success">+</button>
+                                    <button @click="$parent.removeBottom" class="btn btn-danger">-</button>
                             </center>
                         </div>
                     </div>

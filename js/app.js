@@ -18,6 +18,9 @@ const app = new Vue({
                 fog: false
             }])
         },
+        removeRight() {
+            if (this.tiles.length >= 1 && this.tiles[0].length > 1) this.tiles = this.tiles.map(row => row.slice(0, row.length - 1))
+        },
         addBottom() {
             this.tiles.push(this.tiles[this.tiles.length - 1].map(tile => ({
                 block_type: 0,
@@ -30,6 +33,9 @@ const app = new Vue({
                     fog: false
                 }
             ])
+        },
+        removeBottom() {
+            if (this.tiles.length > 1) this.tiles = this.tiles.slice(0, this.tiles.length - 1);
         },
         exportLevel() {
             this.$emit('modal:show', {

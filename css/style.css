@@ -26,7 +26,11 @@ div.tile {
 .btn-right {
     position: absolute;
     right: 184px;
-    top: 235px;
+    top: 180px;
+}
+
+.btn-right.minus {
+    top: 250px;
 }
 
 .key {
